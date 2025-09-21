@@ -13,7 +13,7 @@ if "%VisualStudioVersion%" == "" (
     echo oh oh... You need to run this command from x64 Native Tools Command Prompt for VS 2022.
     goto :buildfailed_nomsg
 )
-if "%VisualStudioVersion%" lss "17.0" (
+if "%VisualStudioVersion%" lss "18.0" (
     echo(
     echo Hello there! We just upgraded AirSim to Unreal Engine 5.5 and Visual Studio 2022.
     echo Here are few easy steps for upgrade so everything is new and shiny:
@@ -99,7 +99,7 @@ REM //---------- Build rpclib ------------
 ECHO Starting cmake to build rpclib...
 IF NOT EXIST external\rpclib\%RPC_VERSION_FOLDER%\build mkdir external\rpclib\%RPC_VERSION_FOLDER%\build
 cd external\rpclib\%RPC_VERSION_FOLDER%\build
-cmake -G"Visual Studio 17 2022" ..
+cmake -G"Visual Studio 18 2026" ..
 
 if "%buildMode%" == "" (
 cmake --build . 

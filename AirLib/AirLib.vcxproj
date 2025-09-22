@@ -94,6 +94,10 @@
     <ClInclude Include="include\vehicles\car\api\CarApiBase.hpp" />
     <ClInclude Include="include\vehicles\computervision\api\ComputerVisionApiBase.hpp" />
     <ClInclude Include="include\vehicles\computervision\api\ComputerVisionApi.hpp" />
+    <ClInclude Include="include\vehicles\fixedwing\api\FixedWingApiBase.hpp" />
+    <ClInclude Include="include\vehicles\fixedwing\api\FixedWingRpcLibAdaptors.hpp" />
+    <ClInclude Include="include\vehicles\fixedwing\api\FixedWingRpcLibClient.hpp" />
+    <ClInclude Include="include\vehicles\fixedwing\api\FixedWingRpcLibServer.hpp" />
     <ClInclude Include="include\vehicles\multirotor\api\MultirotorCommon.hpp" />
     <ClInclude Include="include\vehicles\multirotor\api\MultirotorRpcLibAdaptors.hpp" />
     <ClInclude Include="include\vehicles\multirotor\api\MultirotorRpcLibClient.hpp" />
@@ -187,6 +191,8 @@
   <ItemGroup>
     <ClCompile Include="src\api\RpcLibClientBase.cpp" />
     <ClCompile Include="src\api\RpcLibServerBase.cpp" />
+    <ClCompile Include="src\vehicles\fixedwing\api\FixedWingRpcLibClient.cpp" />
+    <ClCompile Include="src\vehicles\fixedwing\api\FixedWingRpcLibServer.cpp" />
     <ClCompile Include="src\vehicles\multirotor\api\MultirotorApiBase.cpp" />
     <ClCompile Include="src\safety\ObstacleMap.cpp" />
     <ClCompile Include="src\safety\SafetyEval.cpp" />

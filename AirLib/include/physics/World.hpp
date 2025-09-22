@@ -25,9 +25,11 @@ namespace airlib
         {
             World::clear();
             setName("World");
-            physics_engine_->setParent(this);
-            if (physics_engine)
+            // After std::move, only physics_engine_ is valid; guard against null.
+            if (physics_engine_) {
+                physics_engine_->setParent(this);
                 physics_engine_->clear();
+            }
         }
 
         //override updatable interface so we can synchronize physics engine

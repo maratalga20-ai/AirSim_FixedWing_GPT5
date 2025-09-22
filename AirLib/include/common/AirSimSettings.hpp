@@ -46,6 +46,7 @@ namespace airlib
         static constexpr char const* kSimModeTypeCar = "Car";
         static constexpr char const* kSimModeTypeSkidVehicle = "SkidVehicle";
         static constexpr char const* kSimModeTypeComputerVision = "ComputerVision";
+        static constexpr char const* kSimModeTypeFixedWing = "FixedWing";
 
         struct SubwindowSetting
         {
@@ -374,6 +375,9 @@ namespace airlib
         };
 
         struct WifiSetting : SensorSetting
+        {
+        };
+        struct PitotSetting : SensorSetting
         {
         };
         
@@ -1209,6 +1213,12 @@ namespace airlib
                 cv_setting->sensors = sensor_defaults;
                 vehicles[cv_setting->vehicle_name] = std::move(cv_setting);
             }
+            else if (simmode_name == kSimModeTypeFixedWing) {
+                // create default fixed-wing vehicle (custom type key: "fixedwing")
+                auto fw_setting = std::unique_ptr<VehicleSetting>(new VehicleSetting("FixedWing", "fixedwing"));
+                fw_setting->sensors = sensor_defaults;
+                vehicles[fw_setting->vehicle_name] = std::move(fw_setting);
+            }
             else {
                 throw std::invalid_argument(Utils::stringf(
                                                 "Unknown SimMode: %s, failed to set default vehicle settings", simmode_name.c_str())
@@ -1323,6 +1333,8 @@ namespace airlib
                 PawnPath("Class'/AirSim/VehicleAdv/BoxCar/BoxCarPawn.BoxCarPawn_C'"));
             pawn_paths.emplace("DefaultComputerVision",
                                PawnPath("Class'/AirSim/Blueprints/BP_ComputerVisionPawn.BP_ComputerVisionPawn_C'"));
+            pawn_paths.emplace("DefaultFixedWing",
+                PawnPath("Class'/AirSim/Blueprints/BP_FixedWingPawn.BP_FixedWingPawn_C'"));
         }
 
         static void loadPawnPaths(const Settings& settings_json, std::map<std::string, PawnPath>& pawn_paths)
@@ -1808,6 +1820,9 @@ namespace airlib
                 break;
             case SensorBase::SensorType::Wifi:
                 sensor_setting = std::unique_ptr<SensorSetting>(new MarLocUwbSetting());
+                break;
+            case SensorBase::SensorType::Pitot:
+                sensor_setting = std::unique_ptr<SensorSetting>(new PitotSetting());
                 break;
             default:
                 throw std::invalid_argument("Unexpected sensor type");

@@ -471,6 +471,18 @@
     <ClInclude Include="include\common\common_utils\SmoothingFilter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\vehicles\fixedwing\api\FixedWingApiBase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vehicles\fixedwing\api\FixedWingRpcLibAdaptors.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vehicles\fixedwing\api\FixedWingRpcLibClient.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vehicles\fixedwing\api\FixedWingRpcLibServer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\safety\ObstacleMap.cpp">
@@ -507,6 +519,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\vehicles\multirotor\api\MultirotorApiBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vehicles\fixedwing\api\FixedWingRpcLibClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vehicles\fixedwing\api\FixedWingRpcLibServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -13,6 +13,10 @@
 #include "api/WorldSimApiBase.hpp"
 
 #include "common/common_utils/WindowsApisCommonPre.hpp"
+// Ensure rpclib uses its bundled msgpack namespace if not preset by build system
+#ifndef RPCLIB_MSGPACK
+#define RPCLIB_MSGPACK clmdep_msgpack
+#endif
 #include "rpc/msgpack.hpp"
 #include "common/common_utils/WindowsApisCommonPost.hpp"
 

@@ -10,6 +10,7 @@
 #include "sensors/magnetometer/MagnetometerSimple.hpp"
 #include "sensors/gps/GpsSimple.hpp"
 #include "sensors/barometer/BarometerSimple.hpp"
+#include "sensors/pitot/PitotSimple.hpp"
 
 namespace msr
 {
@@ -32,6 +33,8 @@ namespace airlib
                 return std::shared_ptr<GpsSimple>(new GpsSimple(*static_cast<const AirSimSettings::GpsSetting*>(sensor_setting)));
             case SensorBase::SensorType::Barometer:
                 return std::shared_ptr<BarometerSimple>(new BarometerSimple(*static_cast<const AirSimSettings::BarometerSetting*>(sensor_setting)));
+            case SensorBase::SensorType::Pitot:
+                return std::shared_ptr<PitotSimple>(new PitotSimple(*static_cast<const AirSimSettings::PitotSetting*>(sensor_setting)));
             default:
                 throw new std::invalid_argument("Unexpected sensor type");
             }
